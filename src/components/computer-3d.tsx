@@ -1,9 +1,15 @@
 "use client";
 
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, useGLTF } from "@react-three/drei";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  useGLTF,
+  Html,
+} from "@react-three/drei";
 import * as THREE from "three";
+import { motion } from "framer-motion";
 
 function ComputerModel() {
   const groupRef = useRef<THREE.Group>(null);
@@ -30,18 +36,197 @@ function ComputerModel() {
 // Preload the model
 useGLTF.preload("/3d/computer-3d.glb");
 
-export function Computer3D() {
+function Loader() {
   return (
-    <div className="w-full h-full">
-      <Canvas>
-        <Suspense
-          fallback={
-            <mesh>
-              <boxGeometry args={[1, 1, 1]} />
-              <meshStandardMaterial color="#888" />
-            </mesh>
-          }
+    <Html center>
+      <div className="flex flex-col items-center justify-center gap-4">
+        {/* Animated 3D Cube Loader */}
+        <div className="relative w-16 h-16">
+          <motion.div
+            className="absolute inset-0 border-4 border-primary/30 rounded-lg"
+            animate={{
+              rotateX: [0, 360],
+              rotateY: [0, 360],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          />
+          <motion.div
+            className="absolute inset-2 border-4 border-primary/60 rounded-lg"
+            animate={{
+              rotateX: [360, 0],
+              rotateY: [360, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          />
+          <motion.div
+            className="absolute inset-4 bg-primary rounded-lg"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+
+        {/* Loading Text */}
+        <motion.div
+          className="flex items-center gap-2"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
         >
+          <span className="text-sm font-medium text-foreground">
+            Loading 3D Model
+          </span>
+          <motion.span
+            className="flex gap-1"
+            initial="hidden"
+            animate="visible"
+          >
+            {[0, 1, 2].map((i) => (
+              <motion.span
+                key={i}
+                className="w-1.5 h-1.5 bg-primary rounded-full"
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.5, 1, 0.5],
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              />
+            ))}
+          </motion.span>
+        </motion.div>
+
+        {/* Progress Bar */}
+        <motion.div
+          className="w-32 h-1 bg-muted rounded-full overflow-hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          <motion.div
+            className="h-full bg-linear-to-r from-primary/50 via-primary to-primary/50"
+            animate={{
+              x: ["-100%", "100%"],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </motion.div>
+      </div>
+    </Html>
+  );
+}
+
+export function Computer3D() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loading overlay after model loads
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="w-full h-full relative">
+      {/* Overlay Loading State */}
+      {isLoading && (
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm z-10 rounded-lg"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isLoading ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+          onAnimationComplete={() => {
+            if (!isLoading) {
+              // Remove from DOM after fade out
+              const element = document.querySelector(".loading-overlay");
+              if (element) element.remove();
+            }
+          }}
+        >
+          <div className="flex flex-col items-center gap-4">
+            {/* Spinner */}
+            <div className="relative w-20 h-20">
+              <motion.div className="absolute inset-0 border-4 border-primary/20 rounded-full" />
+              <motion.div
+                className="absolute inset-0 border-4 border-transparent border-t-primary rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div
+                className="absolute inset-2 border-4 border-transparent border-t-primary/60 rounded-full"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+              />
+              <motion.div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  className="w-8 h-8 bg-primary/20 rounded-full"
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </motion.div>
+            </div>
+
+            {/* Loading Text */}
+            <div className="text-center">
+              <motion.p
+                className="text-sm font-medium text-foreground mb-2"
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Loading 3D Experience
+              </motion.p>
+              <motion.div className="flex items-center justify-center gap-1">
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    className="w-2 h-2 bg-primary rounded-full"
+                    animate={{
+                      y: [0, -8, 0],
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      repeat: Infinity,
+                      delay: i * 0.15,
+                    }}
+                  />
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      <Canvas>
+        <Suspense fallback={<Loader />}>
           <PerspectiveCamera makeDefault position={[0, 1, 6]} fov={45} />
 
           {/* Lighting */}
