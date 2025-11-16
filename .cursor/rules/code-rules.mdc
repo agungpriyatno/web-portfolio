@@ -1,0 +1,12 @@
+---
+alwaysApply: true
+---
+
+- UI: utamakan menggunakan shadcn. Jika komponen belum tersedia, install dengan perintah `pnpm dlx shadcn@latest add [components]`. Jika benar-benar tidak ada, barulah boleh membuat komponen custom.
+- Penamaan: gunakan kebab-case untuk nama file; gunakan camelCase untuk nama function dan variable.
+- Arsitektur komponen: buat komponen reusable dan terpisah; jangan menumpuk banyak komponen dalam satu file.
+- Struktur aplikasi:
+  - Direktori `@app` hanya boleh berisi Server Components. Tugasnya hanya menggabungkan komponen yang sudah dibuat.
+  - Jika diperlukan Client Component, buat terpisah di `@components` dan impor ke `@app` bila dibutuhkan.
+- Folder `@lib` digunakan untuk utilitas yang berkaitan dengan package eksternal (adapter, wrapper, helper).
+- Klarifikasi: jika ada yang tidak jelas, ajukan pertanyaan sampai benar-benar memahami maksudnya.
