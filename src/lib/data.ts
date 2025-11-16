@@ -9,6 +9,19 @@ import type {
   ContactInfo,
   FooterData,
 } from "@/types";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  InstagramIcon,
+  MessageCircleIcon,
+  FileCodeIcon,
+  Code2Icon,
+  BoxIcon,
+  PaletteIcon,
+  DatabaseIcon,
+  GitBranchIcon,
+  ContainerIcon,
+} from "lucide-react";
 
 export const navItems: NavItem[] = [
   { id: "hero", label: "Beranda", href: "#hero" },
@@ -57,14 +70,14 @@ export const aboutData: About = {
 };
 
 export const techStackData: TechStack[] = [
-  { id: "1", name: "React", icon: "react", category: "Frontend" },
-  { id: "2", name: "Next.js", icon: "next", category: "Frontend" },
-  { id: "3", name: "TypeScript", icon: "typescript", category: "Language" },
-  { id: "4", name: "Node.js", icon: "nodejs", category: "Backend" },
-  { id: "5", name: "Tailwind CSS", icon: "tailwind", category: "Styling" },
-  { id: "6", name: "PostgreSQL", icon: "database", category: "Database" },
-  { id: "7", name: "Git", icon: "git", category: "Tools" },
-  { id: "8", name: "Docker", icon: "docker", category: "DevOps" },
+  { id: "1", name: "React", icon: Code2Icon, category: "Frontend" },
+  { id: "2", name: "Next.js", icon: FileCodeIcon, category: "Frontend" },
+  { id: "3", name: "TypeScript", icon: Code2Icon, category: "Language" },
+  { id: "4", name: "Node.js", icon: BoxIcon, category: "Backend" },
+  { id: "5", name: "Tailwind CSS", icon: PaletteIcon, category: "Styling" },
+  { id: "6", name: "PostgreSQL", icon: DatabaseIcon, category: "Database" },
+  { id: "7", name: "Git", icon: GitBranchIcon, category: "Tools" },
+  { id: "8", name: "Docker", icon: ContainerIcon, category: "DevOps" },
 ];
 
 export const projectsData: Project[] = [
@@ -278,17 +291,22 @@ export const contactData: ContactInfo = {
     {
       platform: "GitHub",
       url: "https://github.com/yourusername",
-      icon: "github",
+      icon: GithubIcon,
     },
     {
       platform: "LinkedIn",
       url: "https://linkedin.com/in/yourusername",
-      icon: "linkedin",
+      icon: LinkedinIcon,
     },
     {
-      platform: "Twitter",
-      url: "https://twitter.com/yourusername",
-      icon: "twitter",
+      platform: "Instagram",
+      url: "https://instagram.com/yourusername",
+      icon: InstagramIcon,
+    },
+    {
+      platform: "Threads",
+      url: "https://threads.net/@yourusername",
+      icon: MessageCircleIcon,
     },
   ],
 };
@@ -305,17 +323,22 @@ export const footerData: FooterData = {
     {
       platform: "GitHub",
       url: "https://github.com/yourusername",
-      icon: "github",
+      icon: GithubIcon,
     },
     {
       platform: "LinkedIn",
       url: "https://linkedin.com/in/yourusername",
-      icon: "linkedin",
+      icon: LinkedinIcon,
     },
     {
-      platform: "Twitter",
-      url: "https://twitter.com/yourusername",
-      icon: "twitter",
+      platform: "Instagram",
+      url: "https://instagram.com/yourusername",
+      icon: InstagramIcon,
+    },
+    {
+      platform: "Threads",
+      url: "https://threads.net/@yourusername",
+      icon: MessageCircleIcon,
     },
   ],
 };

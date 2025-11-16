@@ -1,14 +1,21 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Github, Linkedin, Twitter } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
-import { footerData } from '@/lib/data';
+import Link from "next/link";
+import {
+  Github,
+  Linkedin,
+  Instagram,
+  MessageCircle,
+  GithubIcon,
+} from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { footerData } from "@/lib/data";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: { [key: string]: React.ElementType } = {
   github: Github,
   linkedin: Linkedin,
-  twitter: Twitter,
+  instagram: Instagram,
+  threads: MessageCircle,
 };
 
 export function Footer() {
@@ -16,11 +23,11 @@ export function Footer() {
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   };
@@ -61,7 +68,7 @@ export function Footer() {
             <h4 className="text-sm font-semibold text-foreground">Terhubung</h4>
             <div className="flex gap-4">
               {footerData.socialLinks.map((link) => {
-                const Icon = iconMap[link.icon] || Github;
+                const Icon = link.icon || GithubIcon;
                 return (
                   <Link
                     key={link.platform}
@@ -71,7 +78,7 @@ export function Footer() {
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label={link.platform}
                   >
-                    <Icon className="w-5 h-5" />
+                    {Icon && <Icon className="w-5 h-5" />}
                   </Link>
                 );
               })}
@@ -89,4 +96,3 @@ export function Footer() {
     </footer>
   );
 }
-

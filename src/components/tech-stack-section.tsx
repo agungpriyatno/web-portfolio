@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { techStackData } from "@/lib/data";
+import { fadeInUp, defaultViewport } from "@/lib/animations";
 
 const iconMap: Record<string, React.ElementType> = {
   react: Code2,
@@ -36,17 +37,25 @@ export function TechStackSection() {
       <div className="relative">
         <motion.div
           className="flex gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInUp}
           animate={{
             x: [0, "-50%"],
           }}
           transition={{
-            duration: 35,
-            ease: "linear",
-            repeat: Infinity,
+            x: {
+              duration: 35,
+              ease: "linear",
+              repeat: Infinity,
+            },
+            opacity: { duration: 0.6 },
+            y: { duration: 0.6 },
           }}
         >
           {duplicatedTechStack.map((tech, index) => {
-            const Icon = iconMap[tech.icon] || Wrench;
+            const Icon = tech.icon || Wrench;
             return (
               <div
                 key={`${tech.id}-${index}`}

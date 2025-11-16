@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -26,6 +27,12 @@ import { Button } from "@/components/ui/button";
 import { projectsData } from "@/lib/data";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import {
+  fadeInDown,
+  fadeIn,
+  slideInFromBottom,
+  defaultViewport,
+} from "@/lib/animations";
 
 export function ProjectsSection() {
   const [api, setApi] = useState<CarouselApi>();
@@ -51,15 +58,33 @@ export function ProjectsSection() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground"
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInDown}
+          >
             Proyek
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeIn}
+          >
             Pilihan pekerjaan terbaru dan proyek pribadi saya
-          </p>
+          </motion.p>
         </div>
 
-        <div className="relative px-12">
+        <motion.div
+          className="relative px-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={slideInFromBottom}
+        >
           <Carousel
             setApi={setApi}
             plugins={[plugin.current]}
@@ -144,24 +169,31 @@ export function ProjectsSection() {
             <CarouselPrevious className="hidden sm:flex" />
             <CarouselNext className="hidden sm:flex" />
           </Carousel>
+        </motion.div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-6">
-            {Array.from({ length: count }).map((_, index) => (
-              <button
-                key={index}
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300",
-                  current === index
-                    ? "bg-primary w-6"
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                )}
-                onClick={() => api?.scrollTo(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
+        {/* Dots Indicator */}
+        <motion.div
+          className="flex justify-center gap-2 mt-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeIn}
+          transition={{ delay: 0.3 }}
+        >
+          {Array.from({ length: count }).map((_, index) => (
+            <button
+              key={index}
+              className={cn(
+                "w-2 h-2 rounded-full transition-all duration-300",
+                current === index
+                  ? "bg-primary w-6"
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              )}
+              onClick={() => api?.scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </motion.div>
       </div>
     </section>
   );

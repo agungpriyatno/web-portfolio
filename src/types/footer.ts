@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export interface FooterData {
   copyright: string;
   quickLinks: {
@@ -7,7 +9,6 @@ export interface FooterData {
   socialLinks: {
     platform: string;
     url: string;
-    icon: string;
+    icon: LucideIcon;
   }[];
 }
-
