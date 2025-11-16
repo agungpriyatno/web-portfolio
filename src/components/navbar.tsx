@@ -12,7 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/mode-toggle";
-import { navItems } from "@/lib/data";
+import { navItems } from "@/constants/nav";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -88,7 +88,7 @@ export function Navbar() {
             }}
             className="text-xl font-bold text-foreground hover:opacity-80 transition-opacity"
           >
-            Portfolio
+            Agung Priyatno
           </Link>
 
           {/* Desktop Navigation */}

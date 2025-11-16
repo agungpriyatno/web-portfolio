@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { workExperienceData } from "@/lib/data";
+import { workExperienceData } from "@/constants/work-experience";
 import {
   fadeInDown,
   fadeIn,

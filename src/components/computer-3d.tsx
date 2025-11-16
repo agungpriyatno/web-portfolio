@@ -20,15 +20,18 @@ function ComputerModel() {
       // Subtle floating animation
       groupRef.current.position.y =
         Math.sin(state.clock.elapsedTime * 0.5) * 0.1;
-      // Gentle rotation
+
+      // Rotation kanan-kiri 90 derajat (±45 derajat dari tengah)
+      // Menggunakan Math.sin untuk smooth oscillation
+      const rotationRange = Math.PI / 4; // 45 derajat (total 90° swing)
       groupRef.current.rotation.y =
-        Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
+        Math.sin(state.clock.elapsedTime * 0.4) * rotationRange;
     }
   });
 
   return (
     <group ref={groupRef}>
-      <primitive object={scene} scale={0.8} position={[0, -0.3, 0]} />
+      <primitive object={scene} scale={0.7} position={[0, -0.8, 0]} />
     </group>
   );
 }
@@ -155,75 +158,6 @@ export function Computer3D() {
   return (
     <div className="w-full h-full relative">
       {/* Overlay Loading State */}
-      {isLoading && (
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm z-10 rounded-lg"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isLoading ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
-          onAnimationComplete={() => {
-            if (!isLoading) {
-              // Remove from DOM after fade out
-              const element = document.querySelector(".loading-overlay");
-              if (element) element.remove();
-            }
-          }}
-        >
-          <div className="flex flex-col items-center gap-4">
-            {/* Spinner */}
-            <div className="relative w-20 h-20">
-              <motion.div className="absolute inset-0 border-4 border-primary/20 rounded-full" />
-              <motion.div
-                className="absolute inset-0 border-4 border-transparent border-t-primary rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div
-                className="absolute inset-2 border-4 border-transparent border-t-primary/60 rounded-full"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  className="w-8 h-8 bg-primary/20 rounded-full"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </motion.div>
-            </div>
-
-            {/* Loading Text */}
-            <div className="text-center">
-              <motion.p
-                className="text-sm font-medium text-foreground mb-2"
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                Loading 3D Experience
-              </motion.p>
-              <motion.div className="flex items-center justify-center gap-1">
-                {[0, 1, 2].map((i) => (
-                  <motion.div
-                    key={i}
-                    className="w-2 h-2 bg-primary rounded-full"
-                    animate={{
-                      y: [0, -8, 0],
-                    }}
-                    transition={{
-                      duration: 0.6,
-                      repeat: Infinity,
-                      delay: i * 0.15,
-                    }}
-                  />
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
-      )}
 
       <Canvas>
         <Suspense fallback={<Loader />}>
@@ -249,8 +183,7 @@ export function Computer3D() {
           <OrbitControls
             enableZoom={false}
             enablePan={false}
-            autoRotate
-            autoRotateSpeed={1}
+            autoRotate={false}
             minPolarAngle={Math.PI / 3}
             maxPolarAngle={Math.PI / 2}
           />

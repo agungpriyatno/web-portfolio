@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Github, Star, GitFork } from "lucide-react";
+import { ExternalLink, Github, Star, GitFork, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   Card,
@@ -25,7 +25,7 @@ import {
   defaultViewport,
 } from "@/lib/animations";
 
-export function ProjectsSection() {
+export default function ProjectsPage() {
   const [activeTechs, setActiveTechs] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -38,7 +38,7 @@ export function ProjectsSection() {
     return Array.from(techs).sort();
   }, []);
 
-  // Filter projects
+  // Filter projects (no limit on this page)
   const filteredProjects = useMemo(() => {
     return projectsData.filter((project) => {
       // Filter by search query
@@ -56,11 +56,6 @@ export function ProjectsSection() {
     });
   }, [searchQuery, activeTechs]);
 
-  // Limit to 6 projects for display on homepage
-  const displayedProjects = useMemo(() => {
-    return filteredProjects.slice(0, 6);
-  }, [filteredProjects]);
-
   const handleTechToggle = (tech: string) => {
     setActiveTechs((prev) =>
       prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech]
@@ -73,60 +68,75 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
-      <div className="container mx-auto max-w-7xl">
-        {/* Section Header */}
-        <div className="text-center space-y-4 mb-12">
-          <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground"
-            initial="hidden"
-            whileInView="visible"
-            viewport={defaultViewport}
-            variants={fadeInDown}
-          >
-            Proyek
-          </motion.h2>
-          <motion.p
-            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto"
+    <div className="min-h-screen">
+      {/* Header */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <div className="container mx-auto max-w-7xl">
+          {/* Back Button */}
+          <motion.div
+            className="mb-8"
             initial="hidden"
             whileInView="visible"
             viewport={defaultViewport}
             variants={fadeIn}
           >
-            Pilihan pekerjaan terbaru dan proyek pribadi saya
-          </motion.p>
-        </div>
+            <Button asChild variant="ghost">
+              <Link href="/#projects" className="flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" />
+                Kembali ke Beranda
+              </Link>
+            </Button>
+          </motion.div>
 
-        {/* Filters */}
-        <ProjectFilter
-          technologies={allTechnologies}
-          activeTechs={activeTechs}
-          searchQuery={searchQuery}
-          onTechToggle={handleTechToggle}
-          onSearchChange={setSearchQuery}
-          onClearFilters={handleClearFilters}
-        />
+          {/* Page Header */}
+          <div className="text-center space-y-4 mb-12">
+            <motion.h1
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground"
+              initial="hidden"
+              whileInView="visible"
+              viewport={defaultViewport}
+              variants={fadeInDown}
+            >
+              Semua Proyek
+            </motion.h1>
+            <motion.p
+              className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto"
+              initial="hidden"
+              whileInView="visible"
+              viewport={defaultViewport}
+              variants={fadeIn}
+            >
+              Koleksi lengkap pekerjaan dan proyek pribadi saya
+            </motion.p>
+          </div>
 
-        {/* Projects Grid */}
-        {displayedProjects.length > 0 ? (
-          <motion.div
-            key={`${searchQuery}-${activeTechs.join("-")}`}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={defaultViewport}
-            variants={staggerContainer}
-          >
-            {displayedProjects.map((project) => (
-              <motion.div
-                key={`${project.slug}-${searchQuery}`}
-                variants={scaleIn}
-              >
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="block h-full"
+          {/* Filters */}
+          <ProjectFilter
+            technologies={allTechnologies}
+            activeTechs={activeTechs}
+            searchQuery={searchQuery}
+            onTechToggle={handleTechToggle}
+            onSearchChange={setSearchQuery}
+            onClearFilters={handleClearFilters}
+          />
+
+          {/* Projects Grid */}
+          {filteredProjects.length > 0 ? (
+            <motion.div
+              key={`${searchQuery}-${activeTechs.join("-")}`}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={defaultViewport}
+              variants={staggerContainer}
+            >
+              {filteredProjects.map((project) => (
+                <motion.div
+                  key={`${project.slug}-${searchQuery}`}
+                  variants={scaleIn}
                 >
-                  <Card className="flex flex-col h-full overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                  <Link href={`/projects/${project.slug}`} className="block h-full">
+                    <Card className="flex flex-col h-full overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer">
                     {/* Project Image */}
                     <div className="relative h-48 w-full bg-muted overflow-hidden">
                       {project.image && (
@@ -160,6 +170,7 @@ export function ProjectsSection() {
                       )}
                     </div>
 
+                    {/* Card Content */}
                     <CardHeader>
                       <CardTitle className="text-xl group-hover:text-primary transition-colors">
                         {project.title}
@@ -167,13 +178,29 @@ export function ProjectsSection() {
                       <CardDescription className="line-clamp-2">
                         {project.description}
                       </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="grow">
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.slice(0, 4).map((tech, index) => (
+                          <Badge key={index} variant="secondary">
+                            {tech}
+                          </Badge>
+                        ))}
+                        {project.technologies.length > 4 && (
+                          <Badge variant="outline">
+                            +{project.technologies.length - 4} lagi
+                          </Badge>
+                        )}
+                      </div>
 
                       {/* GitHub Stats */}
                       {project.githubStats && (
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
                           {project.githubStats.stars !== undefined && (
                             <span className="flex items-center gap-1">
-                              <Star className="w-4 h-4 fill-current" />
+                              <Star className="w-4 h-4" />
                               {project.githubStats.stars}
                             </span>
                           )}
@@ -185,52 +212,26 @@ export function ProjectsSection() {
                           )}
                         </div>
                       )}
-                    </CardHeader>
-
-                    <CardContent className="grow">
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.slice(0, 4).map((tech, index) => (
-                          <Badge key={index} variant="secondary">
-                            {tech}
-                          </Badge>
-                        ))}
-                        {project.technologies.length > 4 && (
-                          <Badge variant="outline">
-                            +{project.technologies.length - 4}
-                          </Badge>
-                        )}
-                      </div>
                     </CardContent>
                   </Card>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          <motion.div
-            className="text-center py-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            <p className="text-muted-foreground">
-              Tidak ada proyek yang cocok dengan filter Anda.
-            </p>
-          </motion.div>
-        )}
-
-        {/* More Projects Button */}
-        <motion.div
-          className="flex justify-center mt-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          variants={fadeIn}
-        >
-          <Button asChild size="lg" variant="outline">
-            <Link href="/projects">Lihat Semua Proyek</Link>
-          </Button>
-        </motion.div>
-      </div>
-    </section>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              className="text-center py-12"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <p className="text-muted-foreground">
+                Tidak ada proyek yang cocok dengan filter Anda.
+              </p>
+            </motion.div>
+          )}
+        </div>
+      </section>
+    </div>
   );
 }
+

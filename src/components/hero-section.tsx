@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Computer3D } from "@/components/computer-3d";
 import { FloatingTechIcons } from "@/components/floating-tech-icons";
 import { ScrollIndicator } from "@/components/scroll-indicator";
-import { heroData } from "@/lib/data";
+import { heroData } from "@/constants/hero";
 
 export function HeroSection() {
   return (
@@ -26,7 +26,7 @@ export function HeroSection() {
       <FloatingTechIcons />
 
       {/* 3D Computer Model - Absolute positioned on right side */}
-      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[50vw] h-[600px] pointer-events-none z-0">
+      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[50vw] h-[800px] pointer-events-none z-0">
         <Suspense fallback={null}>
           <Computer3D />
         </Suspense>

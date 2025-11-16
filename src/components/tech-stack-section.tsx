@@ -1,69 +1,66 @@
 "use client";
 
-import {
-  Code2,
-  Database,
-  Wrench,
-  Box,
-  Palette,
-  FileCode,
-  GitBranch,
-  Container,
-} from "lucide-react";
 import { motion } from "framer-motion";
-import { techStackData } from "@/lib/data";
-import { fadeInUp, defaultViewport } from "@/lib/animations";
-
-const iconMap: Record<string, React.ElementType> = {
-  react: Code2,
-  next: FileCode,
-  typescript: Code2,
-  nodejs: Box,
-  tailwind: Palette,
-  database: Database,
-  git: GitBranch,
-  docker: Container,
-};
+import { techStackData } from "@/constants/tech-stack";
+import {
+  fadeInDown,
+  fadeIn,
+  scaleIn,
+  staggerContainer,
+  defaultViewport,
+} from "@/lib/animations";
 
 export function TechStackSection() {
-  // Duplicate the array for seamless infinite loop
-  const duplicatedTechStack = [...techStackData, ...techStackData];
-
   return (
-    <section
-      id="tech-stack"
-      className="py-8 px-4 sm:px-6 lg:px-8 bg-muted/30 overflow-hidden"
-    >
-      <div className="relative">
+    <section id="tech-stack" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <div className="container mx-auto max-w-7xl">
+        {/* Section Header */}
+        <div className="text-center space-y-4 mb-12">
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground"
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeInDown}
+          >
+            Tech Stack
+          </motion.h2>
+          <motion.p
+            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={defaultViewport}
+            variants={fadeIn}
+          >
+            Teknologi dan tools yang saya gunakan untuk membangun aplikasi
+            modern
+          </motion.p>
+        </div>
+
+        {/* Tech Grid - Simple & Clean */}
         <motion.div
-          className="flex gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
-          variants={fadeInUp}
-          animate={{
-            x: [0, "-50%"],
-          }}
-          transition={{
-            x: {
-              duration: 35,
-              ease: "linear",
-              repeat: Infinity,
-            },
-            opacity: { duration: 0.6 },
-            y: { duration: 0.6 },
-          }}
+          variants={staggerContainer}
         >
-          {duplicatedTechStack.map((tech, index) => {
-            const Icon = tech.icon || Wrench;
+          {techStackData.map((tech) => {
+            const Icon = tech.icon;
             return (
-              <div
-                key={`${tech.id}-${index}`}
-                className="flex items-center gap-3 px-6 py-4 rounded-lg bg-background border border-border hover:shadow-md transition-all duration-300 hover:scale-105 whitespace-nowrap shrink-0"
+              <motion.div
+                key={tech.id}
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <Icon className="w-8 h-8 text-foreground/80" />
-                <p className="text-base font-medium">{tech.name}</p>
-              </div>
+                <div className="flex flex-col items-center justify-center p-4 rounded-lg bg-background border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer group">
+                  <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-foreground/80 group-hover:text-primary transition-colors mb-3" />
+                  <p className="text-sm font-medium text-center text-foreground group-hover:text-primary transition-colors">
+                    {tech.name}
+                  </p>
+                </div>
+              </motion.div>
             );
           })}
         </motion.div>

@@ -4,5 +4,9 @@ export interface TechStack {
   id: string;
   name: string;
   icon: LucideIcon;
-  category?: string;
+  category: string;
+  level: "expert" | "advanced" | "intermediate";
+  yearsOfExperience: number;
+  projectCount: number;
+  description?: string;
 }

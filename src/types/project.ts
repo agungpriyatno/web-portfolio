@@ -11,5 +11,11 @@ export interface Project {
   };
   slug: string;
   featured?: boolean;
+  status?: "completed" | "in-progress" | "archived";
+  githubStats?: {
+    stars?: number;
+    forks?: number;
+  };
+  screenshots: string[];
 }
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { TrendingUp, Users, Briefcase, Code } from "lucide-react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { aboutData } from "@/lib/data";
+import { aboutData } from "@/constants/about";
 import {
   scaleInRotate,
   fadeInRight,

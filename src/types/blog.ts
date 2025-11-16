@@ -9,5 +9,8 @@ export interface BlogPost {
   image?: string;
   author?: string;
   readTime?: string;
+  category: string;
+  featured?: boolean;
+  viewCount?: number;
 }
 
