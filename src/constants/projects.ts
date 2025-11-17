@@ -1,17 +1,47 @@
 import type { Project } from "@/types";
 
-export const projectsData: Project[] = [
+export const PROJECTS: Project[] = [
   {
     id: "1",
     title: "Platform Manajemen dan Pemantauan Body-Worn Camera (BWC)",
-    description: `Mengembangkan platform terpusat untuk manajemen dan pemantauan perangkat Body-Worn Camera (BWC). Sistem ini dirancang untuk mengelola seluruh aset operasional, meliputi manajemen perangkat, data personel, penugasan, dan konfigurasi geofence. Platform ini menyediakan fungsionalitas pemantauan status streaming video secara real-time dan mengimplementasikan autentikasi terpusat menggunakan OAuth 2.0 (Authorization Code Flow). Fitur unggulan sistem adalah AI Query, yang memungkinkan pengguna melakukan kueri data menggunakan natural language (bahasa alami).`,
-    image: "/images/projects/dashboard-bwc.jpeg",
-    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
+    description: `Mengembangkan platform terpusat untuk manajemen dan pemantauan perangkat Body-Worn Camera (BWC). Sistem ini dirancang untuk mengelola seluruh aset operasional, meliputi manajemen perangkat, data personel, penugasan, dan konfigurasi geofence. Platform ini menyediakan fungsionalitas pemantauan status streaming video secara real-time dan mengimplementasikan autentikasi terpusat menggunakan OAuth 2.0 (Authorization Code Flow). Fitur unggulan sistem adalah AI Query, yang memungkinkan pengguna melakukan kueri data menggunakan natural language (bahasa alami).
+
+Fungsionalitas Utama:
+
+Streaming RTMP/HLS: Pemantauan status stream (online/offline) per perangkat dan kompatibilitas pipeline HLS player pada web.
+
+AI Query (Aturan Kustom): Menerjemahkan prompt bahasa alami pengguna menjadi kueri SQL yang aman (hanya-baca, SELECT) dan menampilkan hasil dalam tabel dinamis.
+
+Manajemen Geofence: Menyediakan list view dan map view dengan form map picker interaktif (drag marker, set koordinat & radius).
+
+Autentikasi OAuth 2.0: Implementasi Authorization Code Flow dengan Refresh Token, auto-refresh saat terjadi 401, serta opsi logout lokal atau global.
+
+UX Modern: Combobox searchable (dengan debounce & pagination), skeleton loading, layout responsif, dan notifikasi toast sebagai umpan balik.
+
+Keunggulan Proyek:
+
+Aksesibilitas Data: Pengguna non-teknis dapat memperoleh insight data secara cepat tanpa keahlian SQL.
+
+Arsitektur Modular: Menggunakan monorepo (Turborepo) untuk kemudahan pemeliharaan dan skalabilitas.
+
+Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsisten.`,
+    image: "/images/projects/bwc-1.png",
+    technologies: [
+      "Vue.js",
+      "Express.js",
+      "PostgreSQL",
+      "OAuth 2.0",
+      "AI Query",
+      "Minio",
+      "Docker",
+      "Git",
+      "Turborepo",
+    ],
     links: {
       demo: "https://demo.example.com",
       github: "https://github.com/yourusername/ecommerce",
     },
-    slug: "ecommerce-platform",
+    slug: "bwc-platform",
     featured: true,
     status: "completed",
     githubStats: {
@@ -19,9 +49,9 @@ export const projectsData: Project[] = [
       forks: 67,
     },
     screenshots: [
-      "https://picsum.photos/800/600?random=101",
-      "https://picsum.photos/800/600?random=102",
-      "https://picsum.photos/800/600?random=103",
+      "/images/projects/bwc-1.png",
+      "/images/projects/bwc-2.png",
+      "/images/projects/bwc-3.png",
     ],
   },
   {

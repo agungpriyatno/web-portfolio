@@ -1,23 +1,20 @@
 import type { About } from "@/types";
 
-export const aboutData: About = {
+export const ABOUT: About = {
   name: "Agung Priyatno",
   avatar: "/images/avatar.jpg",
-  bio: "Saya adalah seorang Full Stack Developer yang passionate dalam menciptakan aplikasi web modern dan responsif. Dengan pengalaman bertahun-tahun di industri teknologi, saya fokus pada pengembangan solusi yang tidak hanya fungsional tetapi juga memberikan pengalaman pengguna yang luar biasa. Saya selalu bersemangat untuk mempelajari teknologi baru dan berbagi pengetahuan dengan komunitas developer.",
+  bio: `Seorang Fullstack Developer dengan pengalaman lebih dari 3 tahun, memiliki antusiasme tinggi dalam membangun solusi digital yang inovatif dari awal hingga akhir. Saya sangat menikmati proses eksplorasi dan implementasi teknologi modern untuk menciptakan aplikasi yang tidak hanya fungsional, tetapi juga scalable dan mudah dirawat. Bagi saya, mengubah kepingan ide menjadi sebuah produk utuh adalah bagian paling memuaskan dari pekerjaan ini.`,
   skills: [
-    "Web Development",
-    "UI/UX Design",
-    "API Development",
-    "Database Design",
-    "Cloud Services",
+    "Frontend Development",
+    "Backend Development",
+    "Mobile Development",
     "DevOps",
-    "Agile Methodology",
     "Problem Solving",
+    "Team Collaboration",
+    "Continuous Learning",
   ],
   stats: [
     { value: "3+", label: "Tahun Pengalaman" },
     { value: "20+", label: "Proyek Selesai" },
-    { value: "15+", label: "Klien Puas" },
-    { value: "50+", label: "Teknologi Dikuasai" },
   ],
 };

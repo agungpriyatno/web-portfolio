@@ -4,7 +4,7 @@ import Image from "next/image";
 import { TrendingUp, Users, Briefcase, Code } from "lucide-react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { aboutData } from "@/constants/about";
+import { ABOUT } from "@/constants/about";
 import {
   scaleInRotate,
   fadeInRight,
@@ -14,6 +14,7 @@ import {
   bounceIn,
   defaultViewport,
 } from "@/lib/animations";
+import { useMemo } from "react";
 
 const statIcons = {
   0: TrendingUp,
@@ -23,6 +24,10 @@ const statIcons = {
 };
 
 export function AboutSection() {
+  const about = useMemo(() => {
+    return ABOUT;
+  }, []);
+
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-6xl">
@@ -44,8 +49,8 @@ export function AboutSection() {
                 {/* Avatar Container */}
                 <div className="relative w-64  h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-border shadow-2xl">
                   <Image
-                    src={aboutData.avatar}
-                    alt={aboutData.name}
+                    src={about.avatar}
+                    alt={about.name}
                     fill
                     className="object-cover"
                     priority
@@ -69,11 +74,11 @@ export function AboutSection() {
                 Keahlian & Expertise
               </motion.h3>
               <div className="flex flex-wrap gap-2">
-                {aboutData.skills.map((skill) => (
+                {about.skills.map((skill) => (
                   <motion.div key={skill} variants={fadeInUp}>
                     <Badge
                       variant="secondary"
-                      className="px-4 py-2 text-sm font-medium"
+                      className="px-4 py-2 text-sm font-medium hover:bg-primary/10 hover:text-primary transition-all duration-300 select-none"
                     >
                       {skill}
                     </Badge>
@@ -104,7 +109,7 @@ export function AboutSection() {
                 variants={fadeIn}
                 transition={{ delay: 0.2 }}
               >
-                {aboutData.bio}
+                {about.bio}
               </motion.p>
             </div>
 
@@ -116,7 +121,7 @@ export function AboutSection() {
               viewport={defaultViewport}
               variants={staggerContainer}
             >
-              {aboutData.stats.map((stat, index) => {
+              {about.stats.map((stat, index) => {
                 const Icon = statIcons[index as keyof typeof statIcons] || Code;
                 return (
                   <motion.div

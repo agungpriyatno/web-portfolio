@@ -16,7 +16,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProjectFilter } from "@/components/project-filter";
-import { projectsData } from "@/constants/projects";
+import { PROJECTS } from "@/constants/projects";
 import {
   fadeInDown,
   fadeIn,
@@ -25,14 +25,14 @@ import {
   defaultViewport,
 } from "@/lib/animations";
 
-export function ProjectsSection() {
+export function ProjectSection() {
   const [activeTechs, setActiveTechs] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Get all unique technologies
   const allTechnologies = useMemo(() => {
     const techs = new Set<string>();
-    projectsData.forEach((project) => {
+    PROJECTS.forEach((project) => {
       project.technologies.forEach((tech) => techs.add(tech));
     });
     return Array.from(techs).sort();
@@ -40,7 +40,7 @@ export function ProjectsSection() {
 
   // Filter projects
   const filteredProjects = useMemo(() => {
-    return projectsData.filter((project) => {
+    return PROJECTS.filter((project) => {
       // Filter by search query
       const matchesSearch =
         searchQuery === "" ||
@@ -167,24 +167,6 @@ export function ProjectsSection() {
                       <CardDescription className="line-clamp-2">
                         {project.description}
                       </CardDescription>
-
-                      {/* GitHub Stats */}
-                      {project.githubStats && (
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
-                          {project.githubStats.stars !== undefined && (
-                            <span className="flex items-center gap-1">
-                              <Star className="w-4 h-4 fill-current" />
-                              {project.githubStats.stars}
-                            </span>
-                          )}
-                          {project.githubStats.forks !== undefined && (
-                            <span className="flex items-center gap-1">
-                              <GitFork className="w-4 h-4" />
-                              {project.githubStats.forks}
-                            </span>
-                          )}
-                        </div>
-                      )}
                     </CardHeader>
 
                     <CardContent className="grow">

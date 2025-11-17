@@ -1,16 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { techStackData } from "@/constants/tech-stack";
+import { TECH_STACKS } from "@/constants/tech-stack";
 import {
-  fadeInDown,
+  defaultViewport,
   fadeIn,
+  fadeInDown,
   scaleIn,
   staggerContainer,
-  defaultViewport,
 } from "@/lib/animations";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useMemo } from "react";
 
 export function TechStackSection() {
+  const techStacks = useMemo(() => {
+    return TECH_STACKS;
+  }, []);
+
   return (
     <section id="tech-stack" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto max-w-7xl">
@@ -45,8 +51,7 @@ export function TechStackSection() {
           viewport={defaultViewport}
           variants={staggerContainer}
         >
-          {techStackData.map((tech) => {
-            const Icon = tech.icon;
+          {techStacks.map((tech) => {
             return (
               <motion.div
                 key={tech.id}
@@ -55,7 +60,15 @@ export function TechStackSection() {
                 whileTap={{ scale: 0.95 }}
               >
                 <div className="flex flex-col items-center justify-center p-4 rounded-lg bg-background border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer group">
-                  <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-foreground/80 group-hover:text-primary transition-colors mb-3" />
+                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 mb-3 group-hover:scale-110 transition-transform">
+                    <Image
+                      src={tech.icon as string}
+                      alt={tech.name}
+                      fill
+                      className="object-contain grayscale group-hover:grayscale-0"
+                      unoptimized
+                    />
+                  </div>
                   <p className="text-sm font-medium text-center text-foreground group-hover:text-primary transition-colors">
                     {tech.name}
                   </p>

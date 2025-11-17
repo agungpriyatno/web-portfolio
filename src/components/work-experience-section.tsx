@@ -26,7 +26,7 @@ function formatDate(dateString: string | null) {
   return date.toLocaleDateString("id-ID", { year: "numeric", month: "short" });
 }
 
-export function ProfessionalJourneySection() {
+export function WorkExperienceSection() {
   return (
     <section id="journey" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-5xl">
