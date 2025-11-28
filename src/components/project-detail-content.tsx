@@ -63,24 +63,6 @@ export function ProjectDetailContent({ slug }: ProjectDetailContentProps) {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
               {project.title}
             </h1>
-            {project.status && (
-              <Badge
-                variant={
-                  project.status === "completed"
-                    ? "default"
-                    : project.status === "in-progress"
-                    ? "secondary"
-                    : "outline"
-                }
-                className="capitalize shrink-0"
-              >
-                {project.status === "completed"
-                  ? "Selesai"
-                  : project.status === "in-progress"
-                  ? "Berlangsung"
-                  : "Arsip"}
-              </Badge>
-            )}
           </motion.div>
         </motion.div>
 
@@ -91,9 +73,9 @@ export function ProjectDetailContent({ slug }: ProjectDetailContentProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {project.image && (
+          {project.thumbnail && (
             <Image
-              src={project.image}
+              src={project.thumbnail}
               alt={project.title}
               fill
               className="object-contain"
@@ -220,7 +202,7 @@ export function ProjectDetailContent({ slug }: ProjectDetailContentProps) {
         </motion.div>
 
         {/* Screenshots */}
-        {project.screenshots && project.screenshots.length > 0 && (
+        {project.images && project.images.length > 0 && (
           <motion.div
             className="mb-8"
             initial={{ opacity: 0, y: 20 }}
@@ -231,7 +213,7 @@ export function ProjectDetailContent({ slug }: ProjectDetailContentProps) {
               Screenshot
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {project.screenshots.map((screenshot, index) => (
+              {project.images.map((image, index) => (
                 <motion.div
                   key={index}
                   className="relative w-full h-48 rounded-lg overflow-hidden bg-muted cursor-pointer group"
@@ -239,10 +221,10 @@ export function ProjectDetailContent({ slug }: ProjectDetailContentProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 1.1 + index * 0.1 }}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  onClick={() => setSelectedImage(screenshot)}
+                  onClick={() => setSelectedImage(image)}
                 >
                   <Image
-                    src={screenshot}
+                    src={image}
                     alt={`${project.title} screenshot ${index + 1}`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"

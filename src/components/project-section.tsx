@@ -129,34 +129,13 @@ export function ProjectSection() {
                   <Card className="flex flex-col h-full overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer">
                     {/* Project Image */}
                     <div className="relative h-48 w-full bg-muted overflow-hidden">
-                      {project.image && (
+                      {project.thumbnail && (
                         <Image
-                          src={project.image}
+                          src={project.thumbnail}
                           alt={project.title}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
-                      )}
-                      {/* Status Badge */}
-                      {project.status && (
-                        <div className="absolute top-3 right-3">
-                          <Badge
-                            variant={
-                              project.status === "completed"
-                                ? "default"
-                                : project.status === "in-progress"
-                                ? "secondary"
-                                : "outline"
-                            }
-                            className="capitalize"
-                          >
-                            {project.status === "completed"
-                              ? "Selesai"
-                              : project.status === "in-progress"
-                              ? "Berlangsung"
-                              : "Arsip"}
-                          </Badge>
-                        </div>
                       )}
                     </div>
 
