@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
   {
     id: "4",
     title: "Operasional IT & Manajemen Infrastruktur - Pusat Informasi Kriminal Nasional",
-    description: `Memimpin operasional IT harian dan stabilitas infrastruktur untuk Pusat Informasi Kriminal Nasional. Tanggung jawab mencakup pemantauan kesehatan server secara proaktif, pemeliharaan sistem rutin, dan eksekusi protokol pemulihan bencana yang ketat untuk memastikan ketersediaan tinggi 24/7. Berfokus pada menjaga uptime sistem, integritas data, dan kepatuhan ketat terhadap SOP keamanan melalui alat seperti Nagios dan Zabbix.`,
+    description: `Memimpin operasional IT harian dan stabilitas infrastruktur untuk Pusat Informasi Kriminal Nasional. Tanggung jawab mencakup pemantauan kesehatan server secara proaktif, pemeliharaan sistem rutin, dan eksekusi protokol pemulihan bencana yang ketat untuk memastikan ketersediaan tinggi 24/7. Berfokus pada menjaga uptime sistem, integritas data.`,
     thumbnail: "/images/no-image.png",
     technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {

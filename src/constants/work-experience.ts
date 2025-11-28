@@ -7,7 +7,7 @@ export const workExperienceData: WorkExperience[] = [
     role: "Fullstack Developer",
     startDate: "2025-01",
     endDate: null,
-    description: `Memegang tanggung jawab penuh atas siklus hidup pengembangan produk IoT. Tanggung jawab saya dimulai dari fase desain (konseptualisasi, UI/UX, arsitektur data) hingga melakukan eksekusi pengembangan full-stack (Frontend & Backend). Saya bertanggung jawab untuk memastikan produk akhir tidak hanya fungsional tetapi juga andal dan scalable untuk integrasi perangkat di lapangan.`,
+    description: `Bertanggung jawab penuh atas seluruh siklus pengembangan produk IoT (Internet of Things), mulai dari tahap inisiasi dan perancangan arsitektur sistem hingga implementasi full-stack (Frontend & Backend) dan deployment. Fokus utama meliputi perancangan antarmuka pengguna (UI/UX) yang intuitif, pengembangan backend yang berkinerja tinggi untuk pemrosesan data real-time, serta memastikan skalabilitas dan keandalan integrasi antara perangkat keras dan platform cloud.`,
     technologies: [
       "Express.js",
       "Vue.js",
@@ -26,11 +26,11 @@ export const workExperienceData: WorkExperience[] = [
   },
   {
     id: "2",
-    company: "CV. Mareca yasa Media",
+    company: "CV. Mareca Yasa Media",
     role: "Fullstack Developer",
     startDate: "2022-01",
     endDate: "2024-12",
-    description: `Saya bertanggung jawab penuh atas seluruh siklus hidup pengembangan perangkat lunak, mulai dari tahap perencanaan dan desain hingga deployment dan pemeliharaan. Saya bekerja secara langsung dengan tim dan klien untuk membangun berbagai solusi digital, termasuk aplikasi web, website profil, dan aplikasi mobile, yang dapat menjawab kebutuhan bisnis mereka secara efektif.`,
+    description: `Mengelola end-to-end development untuk beragam solusi digital, termasuk aplikasi web berskala enterprise, website profil korporat, dan aplikasi mobile. Bertanggung jawab mulai dari analisis kebutuhan klien, perancangan sistem, coding, hingga pemeliharaan pasca-peluncuran. Berhasil mengantarkan proyek-proyek yang meningkatkan efisiensi operasional klien dan memperkuat kehadiran digital mereka melalui penerapan teknologi modern dan praktik terbaik rekayasa perangkat lunak.`,
     technologies: [
       "Express.js",
       "Next.js",
