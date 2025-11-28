@@ -17,22 +17,22 @@ export const footerData: FooterData = {
   socialLinks: [
     {
       platform: "GitHub",
-      url: "https://github.com/yourusername",
+      url: "https://github.com/agungpriyatno",
       icon: GithubIcon,
     },
     {
       platform: "LinkedIn",
-      url: "https://linkedin.com/in/yourusername",
+      url: "https://www.linkedin.com/in/agung-priyatno-b28853203",
       icon: LinkedinIcon,
     },
     {
       platform: "Instagram",
-      url: "https://instagram.com/yourusername",
+      url: "https://www.instagram.com/agungpriyatno.ts",
       icon: InstagramIcon,
     },
     {
       platform: "Threads",
-      url: "https://threads.net/@yourusername",
+      url: "https://threads.net/@agungpriyatno.ts",
       icon: MessageCircleIcon,
     },
   ],

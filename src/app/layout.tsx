@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Agung Priyatno - Portfolio",
-  description: "Full Stack Developer yang membangun aplikasi web modern dan responsif dengan fokus pada pengalaman pengguna dan kode yang bersih.",
+  description:
+    "Full Stack Developer yang membangun aplikasi web modern dan responsif dengan fokus pada pengalaman pengguna dan kode yang bersih.",
 };
 
 export default function RootLayout({
@@ -30,7 +31,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

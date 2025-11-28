@@ -58,15 +58,15 @@ export function Footer() {
             </p>
             <div className="flex items-start gap-2 text-sm text-muted-foreground">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
-              <span>Jakarta, Indonesia</span>
+              <span>Bogor, Indonesia</span>
             </div>
             <div className="flex items-start gap-2 text-sm text-muted-foreground">
               <Mail className="w-4 h-4 mt-0.5 shrink-0" />
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:agungpriyatno303@gmail.com"
                 className="hover:text-primary transition-colors"
               >
-                your.email@example.com
+                agungpriyatno303@gmail.com
               </a>
             </div>
           </motion.div>

@@ -48,7 +48,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-muted/30"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-muted/30 -z-10" />
@@ -293,7 +293,7 @@ export function ContactSection() {
               <h3 className="text-xl font-semibold text-foreground mb-2">
                 Lokasi
               </h3>
-              <p className="text-muted-foreground mb-4">Jakarta, Indonesia</p>
+              <p className="text-muted-foreground mb-4">Bogor, Indonesia</p>
               <p className="text-sm text-muted-foreground">
                 Tersedia untuk remote work dan relokasi
               </p>
