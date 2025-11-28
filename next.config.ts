@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   images: {
-    domains: ["picsum.photos"],
+    remotePatterns: [{ hostname: "picsum.photos" }],
   },
 };
 

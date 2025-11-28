@@ -3,29 +3,9 @@ import type { Project } from "@/types";
 export const PROJECTS: Project[] = [
   {
     id: "1",
-    title: "Platform Manajemen dan Pemantauan Body-Worn Camera (BWC)",
-    description: `Mengembangkan platform terpusat untuk manajemen dan pemantauan perangkat Body-Worn Camera (BWC). Sistem ini dirancang untuk mengelola seluruh aset operasional, meliputi manajemen perangkat, data personel, penugasan, dan konfigurasi geofence. Platform ini menyediakan fungsionalitas pemantauan status streaming video secara real-time dan mengimplementasikan autentikasi terpusat menggunakan OAuth 2.0 (Authorization Code Flow). Fitur unggulan sistem adalah AI Query, yang memungkinkan pengguna melakukan kueri data menggunakan natural language (bahasa alami).
-
-Fungsionalitas Utama:
-
-Streaming RTMP/HLS: Pemantauan status stream (online/offline) per perangkat dan kompatibilitas pipeline HLS player pada web.
-
-AI Query (Aturan Kustom): Menerjemahkan prompt bahasa alami pengguna menjadi kueri SQL yang aman (hanya-baca, SELECT) dan menampilkan hasil dalam tabel dinamis.
-
-Manajemen Geofence: Menyediakan list view dan map view dengan form map picker interaktif (drag marker, set koordinat & radius).
-
-Autentikasi OAuth 2.0: Implementasi Authorization Code Flow dengan Refresh Token, auto-refresh saat terjadi 401, serta opsi logout lokal atau global.
-
-UX Modern: Combobox searchable (dengan debounce & pagination), skeleton loading, layout responsif, dan notifikasi toast sebagai umpan balik.
-
-Keunggulan Proyek:
-
-Aksesibilitas Data: Pengguna non-teknis dapat memperoleh insight data secara cepat tanpa keahlian SQL.
-
-Arsitektur Modular: Menggunakan monorepo (Turborepo) untuk kemudahan pemeliharaan dan skalabilitas.
-
-Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsisten.`,
-    image: "/images/projects/bwc-1.png",
+    title: "Platform Manajemen Terpusat Body-Worn Camera (BWC)",
+    description: `Platform komprehensif dan terpusat yang dirancang untuk pengelolaan dan pemantauan Body-Worn Camera (BWC) yang mulus. Sistem ini mengatur seluruh siklus operasional, termasuk inventaris perangkat, data personel, logika penugasan, dan konfigurasi geofencing. Kemampuan utamanya meliputi pemantauan streaming video real-time dan autentikasi terpusat yang aman melalui OAuth 2.0. Fitur unggulannya adalah "AI Query," yang memberdayakan pengguna untuk menanyakan dataset kompleks menggunakan bahasa alami, secara drastis menyederhanakan pengambilan dan analisis data.`,
+    thumbnail: "https://picsum.photos/400/300?random=1",
     technologies: [
       "Vue.js",
       "Express.js",
@@ -38,39 +18,47 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
       "Turborepo",
     ],
     links: {
-      demo: "https://demo.example.com",
-      github: "https://github.com/yourusername/ecommerce",
+      demo: undefined,
+      github: undefined,
+      website: undefined,
     },
     slug: "bwc-platform",
-    featured: true,
-    status: "completed",
-    githubStats: {
-      stars: 245,
-      forks: 67,
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
     },
-    screenshots: [
-      "/images/projects/bwc-1.png",
-      "/images/projects/bwc-2.png",
-      "/images/projects/bwc-3.png",
+    images: [
+      "https://picsum.photos/800/600?random=101",
+      "https://picsum.photos/800/600?random=102",
+      "https://picsum.photos/800/600?random=103",
     ],
   },
   {
     id: "2",
-    title: "Implementasi Sistem Monitoring IoT SPARING KLHK",
-    description: `Mengimplementasikan solusi monitoring kualitas air limbah (SPARING) untuk kepatuhan regulasi KLHK. Solusi berjalan di perangkat HMI pada beberapa Water Treatment Plant (WTP), terdiri dari dua aplikasi utama: Node-RED untuk akuisisi dan pengiriman data ke server KLHK & internal, dan aplikasi Flutter sebagai dasbor real-time di HMI untuk operator.`,
-    image: "https://picsum.photos/400/300?random=2",
-    technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
+    title: "Sistem Monitoring Kualitas Air Limbah Berbasis IoT (SPARING)",
+    description: `Solusi IoT canggih yang dirancang untuk memantau kualitas air limbah sesuai dengan regulasi KLHK (SPARING). Diterapkan di berbagai Water Treatment Plant (WTP), sistem ini memiliki arsitektur aplikasi ganda: backend Node-RED untuk akuisisi dan transmisi data yang kuat ke server KLHK, dan dasbor HMI berbasis Flutter yang memberikan visualisasi dan kontrol real-time kepada operator langsung di lokasi pabrik.`,
+    thumbnail: "https://picsum.photos/400/300?random=2",
+    technologies: [
+      "Vue.js",
+      "Express.js",
+      "PostgreSQL",
+      "OAuth 2.0",
+      "AI Query",
+      "Minio",
+      "Docker",
+      "Git",
+      "Turborepo",
+    ],
     links: {
-      demo: "https://tasks.example.com",
-      github: "https://github.com/yourusername/task-app",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "task-management-app",
-    status: "completed",
-    githubStats: {
-      stars: 128,
-      forks: 34,
+    slug: "sparing-iot-monitoring",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
     },
-    screenshots: [
+    images: [
       "https://picsum.photos/800/600?random=201",
       "https://picsum.photos/800/600?random=202",
       "https://picsum.photos/800/600?random=203",
@@ -78,22 +66,20 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "3",
-    title: "Dashboard Cuaca",
-    description:
-      "Dashboard cuaca yang indah dengan perkiraan, peta, dan peringatan berbasis lokasi.",
-    image: "https://picsum.photos/400/300?random=3",
-    technologies: ["React", "TypeScript", "API Integration", "Charts"],
+    title: "Ekosistem Manajemen Smartwatch IoT End-to-End",
+    description: `Platform IoT end-to-end untuk pelacakan dan manajemen smartwatch, yang diarsiteki sebagai monorepo yang dapat diskalakan menggunakan Turborepo. Ekosistem ini terdiri dari empat layanan integral: server TCP berkinerja tinggi untuk ingest data real-time tingkat rendah, REST API Node.js yang tangguh, dasbor frontend Vue.js yang responsif, dan penjadwal pelaporan otomatis. Kontribusi utama meliputi perancangan arsitektur sistem, pengembangan lapisan komunikasi TCP tingkat rendah, dan optimalisasi alur kerja monorepo.`,
+    thumbnail: "https://picsum.photos/400/300?random=3",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://weather.example.com",
-      github: "https://github.com/yourusername/weather-dashboard",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "weather-dashboard",
-    status: "in-progress",
-    githubStats: {
-      stars: 89,
-      forks: 21,
+    slug: "smartwatch-iot",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
     },
-    screenshots: [
+    images: [
       "https://picsum.photos/800/600?random=301",
       "https://picsum.photos/800/600?random=302",
       "https://picsum.photos/800/600?random=303",
@@ -101,18 +87,20 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "4",
-    title: "Sistem Booking Online",
-    description:
-      "Platform booking online untuk layanan salon dan spa dengan kalender appointment dan payment gateway.",
-    image: "https://picsum.photos/400/300?random=4",
-    technologies: ["Vue.js", "Laravel", "MySQL", "Midtrans"],
+    title: "Operasional IT & Manajemen Infrastruktur - Pusat Informasi Kriminal Nasional",
+    description: `Memimpin operasional IT harian dan stabilitas infrastruktur untuk Pusat Informasi Kriminal Nasional. Tanggung jawab mencakup pemantauan kesehatan server secara proaktif, pemeliharaan sistem rutin, dan eksekusi protokol pemulihan bencana yang ketat untuk memastikan ketersediaan tinggi 24/7. Berfokus pada menjaga uptime sistem, integritas data, dan kepatuhan ketat terhadap SOP keamanan melalui alat seperti Nagios dan Zabbix.`,
+    thumbnail: "https://picsum.photos/400/300?random=4",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://booking.example.com",
-      github: "https://github.com/yourusername/booking-system",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "booking-system",
-    featured: true,
-    screenshots: [
+    slug: "it-ops-pikn",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
       "https://picsum.photos/800/600?random=401",
       "https://picsum.photos/800/600?random=402",
       "https://picsum.photos/800/600?random=403",
@@ -120,17 +108,20 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "5",
-    title: "Social Media Dashboard",
-    description:
-      "Dashboard analytics untuk media sosial dengan tracking engagement, follower growth, dan content performance.",
-    image: "https://picsum.photos/400/300?random=5",
-    technologies: ["React", "D3.js", "Firebase", "Tailwind CSS"],
+    title: "Sistem Informasi Manajemen SimKPLP - Kementerian Perhubungan",
+    description: `Berkontribusi pada pengembangan inti aplikasi SimKPLP (Laravel), dengan fokus pada perluasan fitur, optimalisasi kinerja, dan pemeliharaan kode. Berkolaborasi dalam tim agile untuk mengirimkan modul fungsional tertentu, melakukan refactoring kode lama, mengoptimalkan kueri database, dan menyelesaikan bug kritis, memastikan sistem yang tangguh dan stabil untuk Kementerian Perhubungan.`,
+    thumbnail: "https://picsum.photos/400/300?random=5",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://social.example.com",
-      github: "https://github.com/yourusername/social-dashboard",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "social-media-dashboard",
-    screenshots: [
+    slug: "simkplp",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
       "https://picsum.photos/800/600?random=501",
       "https://picsum.photos/800/600?random=502",
       "https://picsum.photos/800/600?random=503",
@@ -138,17 +129,20 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "6",
-    title: "Learning Management System",
-    description:
-      "Platform pembelajaran online dengan video courses, quiz interaktif, dan progress tracking untuk siswa.",
-    image: "https://picsum.photos/400/300?random=6",
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "AWS S3"],
+    title: "Sistem Manajemen Ruang Rapat Terintegrasi",
+    description: `Mengembangkan solusi manajemen ruang rapat holistik yang menampilkan aplikasi web full-stack Next.js sebagai pusat kontrol utama dan penyedia API. Sistem ini terintegrasi dengan aplikasi tampilan ruangan berbasis Flutter, yang disinkronkan secara real-time melalui WebSocket yang di-host dalam lingkungan Next.js. Ini memastikan penjadwalan yang mulus, pembaruan status instan, dan pemanfaatan ruang yang efisien di seluruh organisasi.`,
+    thumbnail: "https://picsum.photos/400/300?random=6",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://lms.example.com",
-      github: "https://github.com/yourusername/lms",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "learning-management-system",
-    screenshots: [
+    slug: "meeting-room-management",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
       "https://picsum.photos/800/600?random=601",
       "https://picsum.photos/800/600?random=602",
       "https://picsum.photos/800/600?random=603",
@@ -156,17 +150,20 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "7",
-    title: "Food Delivery App",
-    description:
-      "Aplikasi food delivery dengan real-time order tracking, rating system, dan multi-vendor support.",
-    image: "https://picsum.photos/400/300?random=7",
-    technologies: ["React Native", "Express", "MongoDB", "Google Maps API"],
+    title: "Aplikasi Mobile Simpusaka - LPSK",
+    description: `Merekayasa aplikasi mobile Simpusaka (Flutter) untuk LPSK, yang berfungsi sebagai gerbang digital aman bagi warga untuk meminta perlindungan saksi dan korban. Aplikasi ini menampilkan alur kerja permohonan multi-tahap, unggahan dokumen yang aman, dan autentikasi biometrik. Hasil utama meliputi UI/UX yang berpusat pada pengguna, pesan terenkripsi untuk komunikasi rahasia, dan penerapan protokol keamanan berlapis untuk melindungi data sensitif.`,
+    thumbnail: "https://picsum.photos/400/300?random=7",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://food.example.com",
-      github: "https://github.com/yourusername/food-delivery",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "food-delivery-app",
-    screenshots: [
+    slug: "simpusaka-lpsk",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
       "https://picsum.photos/800/600?random=701",
       "https://picsum.photos/800/600?random=702",
       "https://picsum.photos/800/600?random=703",
@@ -174,17 +171,20 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "8",
-    title: "Portfolio CMS",
-    description:
-      "Content Management System khusus untuk portfolio dengan drag-and-drop builder dan SEO optimization.",
-    image: "https://picsum.photos/400/300?random=8",
-    technologies: ["Next.js", "Strapi", "GraphQL", "Vercel"],
+    title: "Website Profil Resmi LPSK",
+    description: `Memimpin siklus pengembangan penuh website resmi LPSK, menghadirkan platform modern, responsif, dan dioptimalkan untuk SEO menggunakan Next.js. Proyek ini mencakup CMS yang dibangun khusus untuk memberdayakan staf non-teknis dengan manajemen konten mandiri. Memprioritaskan kinerja tinggi melalui Static Site Generation (SSG) dan meningkatkan keterlibatan pengguna dengan animasi dinamis dan antarmuka yang dipoles serta mudah diakses.`,
+    thumbnail: "https://picsum.photos/400/300?random=8",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://portfolio-cms.example.com",
-      github: "https://github.com/yourusername/portfolio-cms",
+      demo: "https://www.lpsk.go.id/beranda",
+      github: undefined,
     },
-    slug: "portfolio-cms",
-    screenshots: [
+    slug: "website-profil-lpsk",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
       "https://picsum.photos/800/600?random=801",
       "https://picsum.photos/800/600?random=802",
       "https://picsum.photos/800/600?random=803",
@@ -192,17 +192,20 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "9",
-    title: "Inventory Management",
-    description:
-      "Sistem manajemen inventori untuk retail dengan barcode scanning, stock alerts, dan reporting.",
-    image: "https://picsum.photos/400/300?random=9",
-    technologies: ["Angular", "NestJS", "PostgreSQL", "Redis"],
+    title: "Website Profil & Portofolio Perusahaan",
+    description: `Merancang dan mengembangkan website profil perusahaan berkinerja tinggi menggunakan Next.js, menampilkan animasi canggih dan tata letak yang sepenuhnya responsif. Membangun CMS khusus dengan REST API untuk memfasilitasi pembaruan konten yang mudah. Proyek ini memanfaatkan tumpukan teknologi modern termasuk TypeScript, Tailwind CSS, dan Framer Motion untuk memberikan pengalaman pengguna premium yang ramah SEO dengan waktu muat yang cepat.`,
+    thumbnail: "https://picsum.photos/400/300?random=9",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://inventory.example.com",
-      github: "https://github.com/yourusername/inventory",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "inventory-management",
-    screenshots: [
+    slug: "website-profil-perusahaan",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
       "https://picsum.photos/800/600?random=901",
       "https://picsum.photos/800/600?random=902",
       "https://picsum.photos/800/600?random=903",
@@ -210,21 +213,65 @@ Pengalaman Pengguna: Antarmuka yang dirancang agar cepat, responsif, dan konsist
   },
   {
     id: "10",
-    title: "Chat Application",
-    description:
-      "Real-time chat application dengan grup chat, file sharing, dan video call features.",
-    image: "https://picsum.photos/400/300?random=10",
-    technologies: ["React", "Socket.io", "WebRTC", "Node.js"],
+    title: "Sistem E-Persuratan (Surat Elektronik)",
+    description: `Mengembangkan sistem E-Persuratan yang komprehensif menggunakan arsitektur decoupled dengan frontend SPA Angular dan backend REST API Nest.js. Mengelola siklus pengembangan penuh, mulai dari desain API dan logika alur kerja disposisi yang kompleks hingga implementasi antarmuka pengguna yang responsif. Fitur utama meliputi integrasi tanda tangan digital (TTE), kontrol akses berbasis peran, dan basis kode modular yang aman secara tipe.`,
+    thumbnail: "https://picsum.photos/400/300?random=10",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
     links: {
-      demo: "https://chat.example.com",
-      github: "https://github.com/yourusername/chat-app",
+      demo: undefined,
+      github: undefined,
     },
-    slug: "chat-application",
-    featured: true,
-    screenshots: [
+    slug: "e-persuratan",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
       "https://picsum.photos/800/600?random=1001",
       "https://picsum.photos/800/600?random=1002",
       "https://picsum.photos/800/600?random=1003",
+    ],
+  },
+  {
+    id: "11",
+    title: "Aplikasi Wayfinder Interaktif",
+    description: `Membangun aplikasi wayfinding interaktif dari awal menggunakan arsitektur full-stack Next.js. Aplikasi ini menyediakan pemosisian pengguna real-time, peta interaktif, dan perhitungan rute optimal ke outlet tujuan menggunakan algoritma A*/Dijkstra yang diimplementasikan melalui API Routes. Termasuk panel admin komprehensif untuk mengelola data peta dan lokasi outlet, memberikan pengalaman navigasi yang mulus.`,
+    thumbnail: "https://picsum.photos/400/300?random=11",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
+    links: {
+      demo: undefined,
+      github: undefined,
+    },
+    slug: "wayfinder",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
+      "https://picsum.photos/800/600?random=1101",
+      "https://picsum.photos/800/600?random=1102",
+      "https://picsum.photos/800/600?random=1103",
+    ],
+  },
+  {
+    id: "12",
+    title: "Ekosistem Superapp & Backoffice Bawaslu",
+    description: `Bertindak sebagai Frontend Developer utama untuk dua platform penting: Superapp Android berbasis Flutter untuk pelaporan publik dan koordinasi petugas lapangan, serta dasbor Backoffice berbasis Angular untuk administrasi data terpusat. Tanggung jawab meliputi penerjemahan desain menjadi UI/UX yang responsif, integrasi REST API yang kompleks, implementasi fitur perangkat seperti GPS dan Kamera, serta visualisasi dataset besar untuk pemantauan pemilu skala nasional.`,
+    thumbnail: "https://picsum.photos/400/300?random=12",
+    technologies: ["Vue.js", "Express.js", "Node.js", "TypeScript", "API Integration", "Charts"],
+    links: {
+      demo: undefined,
+      github: undefined,
+    },
+    slug: "superapp-backoffice-bawaslu",
+    period: {
+      start: "2024-01-01",
+      end: "2024-12-31",
+    },
+    images: [
+      "https://picsum.photos/800/600?random=1201",
+      "https://picsum.photos/800/600?random=1202",
+      "https://picsum.photos/800/600?random=1203",
     ],
   },
 ];
